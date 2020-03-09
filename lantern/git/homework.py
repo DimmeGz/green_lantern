@@ -48,7 +48,9 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
-    if all(isinstance(i, int) for i in [first_value, second_value]):
+    if isinstance(first_value, bool) or isinstance(second_value, bool):
+        raise TypeError
+    elif all(isinstance(i, int) for i in [first_value, second_value]):
         return first_value * second_value
     else:
         raise TypeError

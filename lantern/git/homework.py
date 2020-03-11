@@ -86,7 +86,7 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
     try:
         first_value, second_value = int(first_value), int(second_value)
         return first_value * second_value
-    except ValueError or TypeError:
+    except (ValueError, TypeError):
         raise ValueError
 
 
@@ -146,7 +146,7 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
-    unsorted_list, sorted_list = data, []
+    unsorted_list, sorted_list = data[:], []
     while unsorted_list:
         m = min(unsorted_list)
         sorted_list.append(m)

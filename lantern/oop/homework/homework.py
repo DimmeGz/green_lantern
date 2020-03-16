@@ -45,8 +45,7 @@ class Cat:
 
     def eat(self, product):
         food = {'fodder': 10, 'apple': 5, 'milk': 2}
-        if product in food:
-            self._increase_saturation_level(food[product])
+        self._increase_saturation_level(food.get(product, 0))
 
     def _reduce_saturation_level(self, value):
         self.saturation_level = max(self.saturation_level - value, 0)
@@ -89,8 +88,7 @@ class Cheetah(Cat):
 
     def eat(self, product):
         food = {'gazelle': 30, 'rabbit': 15}
-        if product in food:
-            self._increase_saturation_level(food[product])
+        self._increase_saturation_level(food.get(product, 0))
 
     def _set_average_speed(self):
         age_dict = {self.age > 15: 40, self.age <= 15: 75, self.age <= 5: 90}
@@ -142,10 +140,10 @@ class Roof:
         self.roof_type = roof_type
 
     def roof_square(self):
-        roof_dict = {'gable': self.height * self.width * 2,
-                     'single-pitch': self.height * self.width}
+        roof_dict = {'gable': lambda height, width: height * width * 2,
+                     'single-pitch': lambda height, width: height * width}
         if self.roof_type in roof_dict:
-            return roof_dict[self.roof_type]
+            return roof_dict[self.roof_type](self.height, self.width)
         else:
             raise ValueError('Sorry there is only two types of roofs')
 
@@ -194,10 +192,10 @@ class Door:
         return self.width * self.height
 
     def door_price(self, material):
-        door_price_dict = {'wood': self.door_square() * self.wood_price,
-                           'metal': self.door_square() * self.metal_price}
-        if material in door_price_dict:
-            return door_price_dict[material]
+        door_price_dict = {'wood': self.wood_price,
+                           'metal': self.metal_price}
+        if door_price_dict[material]:
+            return door_price_dict[material] * self.door_square()
         else:
             raise ValueError("Sorry we don't have such material")
 

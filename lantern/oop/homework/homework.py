@@ -62,7 +62,7 @@ class Cat:
         run_dict = {distance > 200: 50, distance <= 200: 25, distance <= 100: 15,
                     distance <= 50: 5, distance <= 25: 2}
         self._reduce_saturation_level(run_dict[True])
-        return "Your cat ran {distance} kilometers"
+        return f"Your cat ran {distance} kilometers"
 
     def get_saturation_level(self):
         return self.saturation_level if self.saturation_level > 0 else "Your cat is died :("

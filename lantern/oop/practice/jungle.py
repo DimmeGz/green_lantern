@@ -52,7 +52,7 @@ class Herbivorous(Animal):
 
 
 if __name__ == "__main__":
-    # test if predator can hunt herbicorous
+    # test if predator can hunt herbivorous
     simba = Predator(weight=100, speed=100, power=70)
     timon = Herbivorous(weight=10, speed=114)
     JUNGLE.predators.append(simba)

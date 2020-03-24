@@ -5,6 +5,7 @@ class Asteroid:
 
 
 class Robot:
+    compass = ['N', 'E', 'S', 'W']
 
     def __init__(self, x, y, asteroid, direction, obstacle):
         self.x = x
@@ -12,7 +13,6 @@ class Robot:
         self.asteroid = asteroid
         self.direction = direction
         self.obstacle = obstacle
-        self.compass = ['N', 'E', 'S', 'W']
         self.health = 100
         self.battery = 100
         if self.x > self.asteroid.x or self.y > self.asteroid.y or self.x < 0 or self.y < 0:
@@ -24,15 +24,13 @@ class Robot:
         if self.direction in self.compass:
             self.battery -= 1
             self.battery_check()
-            self.direction = self.compass[self.compass.index(self.direction) - 1 \
-                if self.compass.index(self.direction) - 1 != -1 else 3]
+            self.direction = self.compass[self.compass.index(self.direction) - 1]
 
     def turn_right(self):
         if self.direction in self.compass:
             self.battery -= 1
             self.battery_check()
-            self.direction = self.compass[self.compass.index(self.direction) + 1 \
-                if self.compass.index(self.direction) + 1 != 4 else 0]
+            self.direction = self.compass[(self.compass.index(self.direction) + 1) % 4]
 
     def battery_check(self):
         if self.battery == 0:
@@ -119,7 +117,7 @@ class Robot:
         try:
             self
         except NameError:
-            raise RobotCrashError
+            raise RobotCrashError('Robot is self destroyed')
 
 
 class Obstacle:
@@ -128,7 +126,7 @@ class Obstacle:
         self.y = y
         self.asteroid = asteroid
         if self.x > self.asteroid.x or self.y > self.asteroid.y or self.x < 0 or self.y < 0:
-            raise MissAsteroidError()
+            raise MissAsteroidError('Obstracle is not on asteroid')
 
 
 class MissAsteroidError(Exception):

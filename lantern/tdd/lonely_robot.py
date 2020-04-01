@@ -9,3 +9,9 @@ class Robot:
         self.x = x
         self.y = y
         self.asteroid = asteroid
+        if self.x > self.asteroid.x:
+            raise MissAsteroidError()
+
+
+class MissAsteroidError(Exception):
+    pass

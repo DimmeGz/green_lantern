@@ -167,7 +167,13 @@ def task_11_list_customers_starting_from_11th(cur):
 
     Returns: 11 records
     """
-    cur.execute("SELECT * FROM customers OFFSET 11")
+    sql = """
+    SELECT *
+    FROM customers
+    ORDER BY customerid
+    OFFSET 11;
+    """
+    cur.execute(sql)
     return cur.fetchall()
 
 

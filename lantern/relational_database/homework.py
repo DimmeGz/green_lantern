@@ -201,7 +201,7 @@ def task_13_list_products_from_sweden_suppliers(cur):
     Returns: 3 records
     """
     sql = """
-    SELECT p.productname
+    SELECT productname
     FROM products p
     LEFT JOIN suppliers s
     ON p.supplierid = s.supplierid 
@@ -221,7 +221,7 @@ def task_14_list_products_with_supplier_information(cur):
     Returns: 77 records
     """
     sql = """
-    SELECT p.productid, p.productname, p.unit, p.price, s.country, s.city, s.suppliername
+    SELECT productid, productname, unit, price, country, city, suppliername
     FROM products p, suppliers s
     WHERE p.supplierid = s.supplierid
     """
@@ -239,7 +239,7 @@ def task_15_list_customers_with_any_order_or_not(cur):
     Returns: 213 records
     """
     sql = """
-        SELECT c.customername, c.contactname, c.country, o.orderid
+        SELECT customername, contactname, country, orderid
         FROM customers c, orders o
         WHERE c.customerid = o.customerid
         """
@@ -257,7 +257,7 @@ def task_16_match_all_customers_and_suppliers_by_country(cur):
     Returns: 194 records
     """
     sql = """
-        SELECT c.customername, c.address, c.country as customercountry, 
+        SELECT customername, c.address, c.country as customercountry, 
         s.country as suppliercountry, s.suppliername
         FROM customers c
         FULL JOIN suppliers s

@@ -45,37 +45,36 @@ def update_user(user_id):
 @app.route('/goods', methods=['POST'])
 def create_goods():
     db = inject.instance('DB')
-    good_count = db.goods.add(request.json)
-    return jsonify({'numbers of items created': good_count}), 201
+    return jsonify({'numbers of items created': db.goods.add(request.json)}), 201
 
 
 @app.route('/goods')
 def get_goods():
     db = inject.instance('DB')
-    goods = db.goods.get_goods()
-    return jsonify(goods)
+    return jsonify(db.goods.get_goods())
 
 
 @app.route('/goods', methods=['PUT'])
 def update_goods():
     db = inject.instance('DB')
     upd, err = db.goods.update_goods(request.json)
-    return jsonify({'successfully_updated': upd, 'errors': {'no such id in goods': err}})
+    if err:
+        return jsonify({'successfully_updated': upd, 'errors': {'no such id in goods': err}})
+    else:
+        return jsonify({'successfully_updated': upd})
 
 
 @app.route('/stores', methods=['POST'])
-def post_store():
+def create_store():
     db = inject.instance('DB')
     db.users.get_user_by_id(request.json['manager_id'])
-    store_id = db.stores.add(request.json)
-    return jsonify({'store_id': store_id}), 200
+    return jsonify({'store_id': db.stores.add(request.json)}), 201
 
 
 @app.route('/stores/<int:store_id>')
 def get_store_by_id(store_id):
     db = inject.instance('DB')
-    store = db.stores.get(store_id)
-    return jsonify(store)
+    return jsonify(db.stores.get(store_id))
 
 
 @app.route('/stores/<int:store_id>', methods=['PUT'])

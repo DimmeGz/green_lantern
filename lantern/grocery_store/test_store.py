@@ -31,6 +31,7 @@ class TestUsers(Initializer):
             '/users',
             json={'name': 'Andrew Derkach'}
         )
+        assert resp.status_code == 201
         assert resp.json == {'user_id': 2}
 
     def test_successful_get_user(self):
@@ -113,7 +114,7 @@ class TestStores(Initializer):
     @pytest.mark.parametrize(
         "store,answer_code,answer",
         (
-                ({'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}, 200, {'store_id': 1}),
+                ({'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 1}, 201, {'store_id': 1}),
                 ({'name': 'Mad Cow', 'location': 'Lviv', 'manager_id': 15}, 404, {'error': 'No such user_id 15'})
         )
     )

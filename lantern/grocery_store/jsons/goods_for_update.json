@@ -1,0 +1,20 @@
+[
+  {
+    "name" : "Merida Silex 700", "price" : 2215, "id" : 1
+  },
+  {
+    "name" : "Merida Speeder 200", "price" : 897, "id" : 2
+  },
+  {
+    "name" : "Merida Big.Nine SLX-Edition", "price" : 1377, "id" : 3
+  },
+  {
+    "name" : "Merida Reacto 5000", "price" : 2054, "id" : 11
+  },
+  {
+    "name" : "Merida Scultura 100", "price" : 793, "id" : 12
+  },
+  {
+    "name" : "Merida One-Sixty 3000", "price" : 3761, "id" : 13
+  }
+]

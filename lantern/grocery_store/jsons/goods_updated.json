@@ -1,0 +1,32 @@
+[
+  {
+    "name" : "Merida Silex 700", "price" : 2115, "id" : 1
+  },
+  {
+    "name" : "Merida Speeder 200", "price" : 797, "id" : 2
+  },
+  {
+    "name" : "Merida Big.Nine SLX-Edition", "price" : 1277, "id" : 3
+  },
+  {
+    "name" : "Merida Reacto Disc 6000", "price" : 3118, "id" : 4
+  },
+  {
+    "name" : "Merida Scultura Disc 5000", "price" : 2536, "id" : 5
+  },
+  {
+    "name" : "Merida One-Sixty 700", "price" : 3240, "id" : 6
+  },
+  {
+    "name" : "Merida One-Forty 900", "price" : 4427, "id" : 7
+  },
+  {
+    "name" : "Merida Matts 6.10-V", "price" : 406, "id" : 8
+  },
+  {
+    "name" : "Merida Mission CX 700", "price" : 2118, "id" : 9
+  },
+  {
+    "name" : "Merida Crossway Urban 40", "price" : 562, "id" : 10
+  }
+]

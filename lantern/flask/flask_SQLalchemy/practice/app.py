@@ -3,19 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy_utils import create_database, drop_database, database_exists
 
 from config import Config
-from populate_data import get_users
-
-
-db = SQLAlchemy()
-
-
-class User(db.Model):
-    __tablename__ = "users"
-
-    user_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(), nullable=False)
-    email = db.Column(db.String(), nullable=False)
-    password = db.Column(db.String(), nullable=False)
+from populate_data import get_users, get_stores, get_goods
+from models import User, Store, Good, db
 
 
 app = Flask(__name__)
@@ -35,5 +24,19 @@ with app.app_context():
     users = get_users()
     for user in users:
         db.session.add(User(**user))
+    db.session.commit()
+    print('Data written in data_base succesfuly')
+
+with app.app_context():
+    stores = get_stores()
+    for store in stores:
+        db.session.add(Store(**store))
+    db.session.commit()
+    print('Data written in data_base succesfuly')
+
+with app.app_context():
+    goods = get_goods()
+    for good in goods:
+        db.session.add(Good(**good))
     db.session.commit()
     print('Data written in data_base succesfuly')

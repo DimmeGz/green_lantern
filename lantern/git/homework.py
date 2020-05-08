@@ -46,9 +46,18 @@ def multiple_ints(first_value: int, second_value: int) -> int:
     Returns:
         Product of elements
     """
+<<<<<<< HEAD
+    if any(isinstance(i, bool) for i in [first_value, second_value]):
+        raise TypeError
+    elif all(isinstance(i, int) for i in [first_value, second_value]):
+        return first_value * second_value
+    else:
+        raise TypeError
+=======
     if not isinstance(first_value, int) or not isinstance(second_value, int):
         raise TypeError("Input data must be integer")
     return first_value * second_value
+>>>>>>> upstream/master
 
 
 def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
@@ -75,11 +84,18 @@ def multiple_ints_with_conversion(first_value: Any, second_value: Any) -> int:
         >>> "Not valid input data"
     """
     try:
+<<<<<<< HEAD
+        first_value, second_value = int(first_value), int(second_value)
+        return first_value * second_value
+    except (ValueError, TypeError):
+        raise ValueError
+=======
         first_value = int(first_value)
         second_value = int(second_value)
         return first_value * second_value
     except (ValueError, TypeError):
         raise ValueError("Not valid input data")
+>>>>>>> upstream/master
 
 
 def is_word_in_text(word: str, text: str) -> bool:
@@ -102,7 +118,11 @@ def some_loop_exercise() -> list:
     """
     Use loop to create list that contain int values from 0 to 12 except 6 and 7
     """
+<<<<<<< HEAD
+    return [i for i in range (13) if i not in [6, 7]]
+=======
     return [i for i in range(0, 13) if i != 6 and i != 7]
+>>>>>>> upstream/master
 
 
 def remove_from_list_all_negative_numbers(data: List[int]) -> list:
@@ -114,7 +134,11 @@ def remove_from_list_all_negative_numbers(data: List[int]) -> list:
         remove_from_list_all_negative_numbers([1, 5, -7, 8, -1])
         >>> [1, 5, 8]
     """
+<<<<<<< HEAD
+    return list(filter(lambda x: x >= 0, data))
+=======
     return [i for i in data if i > 0]
+>>>>>>> upstream/master
 
 
 def alphabet() -> dict:
@@ -125,8 +149,13 @@ def alphabet() -> dict:
         alphabet()
         >>> {"a": 1, "b": 2 ...}
     """
+<<<<<<< HEAD
+    return {i : chr(i + 96) for i in range (1,27)}
+
+=======
     from string import ascii_lowercase
     return dict(enumerate(ascii_lowercase, start=1))
+>>>>>>> upstream/master
 
 def simple_sort(data: List[int]) -> List[list]:
     """
@@ -135,6 +164,14 @@ def simple_sort(data: List[int]) -> List[list]:
         simple_sort([2, 9, 6, 7, 3, 2, 1])
         >>> [1, 2, 2, 3, 6, 7, 9]
     """
+<<<<<<< HEAD
+    unsorted_list, sorted_list = data[:], []
+    while unsorted_list:
+        m = min(unsorted_list)
+        sorted_list.append(m)
+        unsorted_list.remove(m)
+    return sorted_list
+=======
     sorted_list = []
     new_data = data.copy()
     while new_data:
@@ -146,3 +183,4 @@ def simple_sort(data: List[int]) -> List[list]:
         new_data.remove(minimum)
 
     return sorted_list
+>>>>>>> upstream/master

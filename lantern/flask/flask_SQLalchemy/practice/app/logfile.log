@@ -1,0 +1,6 @@
+2020-05-08 14:02:58,832 INFO   Database "cursor_sqlalchemy_db" does not exists
+2020-05-08 14:02:58,928 INFO   Data "cursor_sqlalchemy_db" base created
+2020-05-08 14:02:58,971 INFO   Database "cursor_sqlalchemy_db" exists
+2020-05-08 14:02:59,090 INFO   Data written to table "users" in db "cursor_sqlalchemy_db" succesfuly
+2020-05-08 14:02:59,105 INFO   Data written to table "stores" in db "cursor_sqlalchemy_db" succesfuly
+2020-05-08 14:02:59,148 INFO   Data written to table "goods" in db "cursor_sqlalchemy_db" succesfuly

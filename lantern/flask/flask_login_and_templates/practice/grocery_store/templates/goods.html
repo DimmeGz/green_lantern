@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="title">
+        List of goods
+    </h1>
+
+
+    <table class="table", align="center">
+        <thead>
+        <tr>
+            <th>good_id</th>
+            <th>brand</th>
+            <th>name</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for good in goods %}
+            <tr>
+                <td>{{ good['good_id'] }}</td>
+                <td>{{ good['brand'] }}</td>
+                <td>{{ good['name'] }}</td>
+                <td>{{ good['price'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

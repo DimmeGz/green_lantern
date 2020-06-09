@@ -1,8 +1,7 @@
 from django.urls import path
-from django.views.generic import TemplateView
 
 from apps.articles.views import main_page, SearchResultsView, main_page_logged_id, ShowTitsView, ArticleDetailView, \
-    ArticleUpdateImageView
+    ArticleUpdateImageView, delete_view, article_json, articles_list_json, NewArticleFormView, ArticleListView
 
 app_name = 'articles'
 
@@ -13,4 +12,9 @@ urlpatterns = [
     path('tits_list/', ShowTitsView.as_view(), name='tits'),
     path('<int:id>/', ArticleDetailView.as_view(), name='detail'),
     path('<int:id>/change_image/', ArticleUpdateImageView.as_view(), name='update-image'),
+    path('delete/<int:id>/', delete_view),
+    path('json/<int:id>/', article_json),
+    path('list_json/', articles_list_json),
+    path('new/', NewArticleFormView.as_view(), name='article-form'),
+    path('all/', ArticleListView.as_view(), name='article-list'),
 ]

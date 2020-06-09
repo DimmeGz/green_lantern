@@ -7,3 +7,9 @@ class SearchForm(forms.Form):
 
 class ArticleImageForm(forms.Form):
     image = forms.ImageField(required=False)
+
+
+class ArticleForm(forms.Form):
+    author = forms.IntegerField()
+    title = forms.CharField(max_length=255)
+    body = forms.CharField(widget=forms.Textarea, label='Text')

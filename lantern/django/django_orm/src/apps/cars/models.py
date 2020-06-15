@@ -106,7 +106,7 @@ class Car(BaseDateAuditModel):
     engine_type = models.ForeignKey(to='CarEngine', on_delete=models.SET_NULL, null=True, blank=False)
     fuel_type = models.ForeignKey(to='FuelType', on_delete=models.SET_NULL, null=True, blank=False)
     engine_power = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=False)
-    price = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=False)
+    price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=False)
     doors = models.PositiveSmallIntegerField(default=4)
     sitting_places = models.PositiveSmallIntegerField(default=4)
     first_registration_date = models.DateField(auto_now_add=False, null=True, blank=False)

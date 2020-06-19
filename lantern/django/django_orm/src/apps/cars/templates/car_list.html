@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table border="1" , align="center">
+    <tr>
+        <th>ID</th>
+        <th>Number</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>Price</th>
+        <th>Dealer</th>
+    </tr>
+    {% for car in object_list %}
+    <tr>
+        <th><a href="/car/{{ car.id }}">{{ car.id }}</a></th>
+        <th>{{ car.number }}</th>
+        <th>{{ car.brand }}</th>
+        <th>{{ car.model }}</th>
+        <th>{{ car.colour }}</th>
+        <th>{{ car.price }}</th>
+        <th><a href="/car_list/?dealer_id={{ car.dealer_id }}">{{ car.dealer }}</a></th>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

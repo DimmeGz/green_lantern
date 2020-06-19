@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ car }}</h1>
+<table border="1" , align="center">
+    <tr>
+        <th>ID</th>
+        <th>Number</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Colour</th>
+        <th>Price</th>
+        <th>Dealer</th>
+        <th>Engine Type</th>
+        <th>Engine Power</th>
+        <th>Fuel Type</th>
+        <th>Doors</th>
+        <th>Sitting Places</th>
+        <th>First Registration Date</th>
+    </tr>
+    <tr>
+        <th><a href="/car/{{ car.dealer_id }}">{{ car.id }}</a></th>
+        <th>{{ car.number }}</th>
+        <th>{{ car.brand }}</th>
+        <th>{{ car.model }}</th>
+        <th>{{ car.colour }}</th>
+        <th>{{ car.price }}</th>
+        <th><a href="/car_list/?dealer_id={{ car.dealer_id }}">{{ car.dealer }}</a></th>
+        <th>{{ engine_type }}</th>
+        <th>{{ car.engine_power }}</th>
+        <th>{{ car.fuel_type }}</th>
+        <th>{{ car.doors }}</th>
+        <th>{{ car.sitting_places }}</th>
+        <th>{{ car.first_registration_date }}</th>
+    </tr>
+</table>
+sdf
+{% for photo in car.photos.all %}
+{% if car.photo %}
+<div class="item"><img src="{{ photo.image.url }}"/></div>
+{% endif %}
+{% endfor %}
+{% endblock %}

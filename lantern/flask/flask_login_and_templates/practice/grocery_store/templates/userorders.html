@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% set totalsum = [0] -%}
+    <h1 class="title">
+        It's your orders, {{ user }}!
+    </h1>
+    <table class="table" align="center">
+        <thead>
+        <tr>
+            <th>order_id</th>
+            <th>store</th>
+            <th>order date</th>
+            <th>goods</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.order_id }}</td>
+                <td>{{ order.store.name }}</td>
+                <td>{{ order.created_time }}</td>
+                <td>{% for line in order.order_lines %}
+                    <li>{{ line.good.name }}</li>
+                {% endfor %}</td>
+                <td>{% set sumorder = [0] -%}
+                    {% for line in order.order_lines %}
+                        {% if totalsum.append(totalsum.pop()+ line.good.price) -%}{% endif %}
+                        {% if sumorder.append(sumorder.pop()+ line.good.price) -%}{% endif %}
+                    {% endfor %}
+                    {{ sumorder[0] }}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td><b>Total sum</b></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><b>{{ totalsum[0] }}</b></td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}

@@ -2,7 +2,10 @@
 
 {% block content %}
 <h1 class="title">
-  Welcome, {{ user }}!
-  Your email is {{ email }}
+  Welcome, {{ user }}!<br>
+  Your email is {{ email }}<br>
+  {% if shop %}
+      You is a manager in {{ shop['name'] }}
+  {% endif %}
 </h1>
 {% endblock %}

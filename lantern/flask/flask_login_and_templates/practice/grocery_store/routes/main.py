@@ -13,4 +13,9 @@ def index():
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', user=current_user.name, email=current_user.email)
+    return render_template('profile.html', user=current_user.name, email=current_user.email, shop=current_user.manage_stores)
+
+
+@main.route('/profile/orders')
+def user_orders():
+    return render_template('userorders.html', user=current_user.name, orders=current_user.orders)

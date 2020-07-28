@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<table border="1" , align="center">
+    <tr>
+        <th>Order ID</th>
+        <th>Car Name</th>
+        <th>Status</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>e-mail</th>
+        <th>Phone</th>
+        <th>Message</th>
+    </tr>
+    {% for order in object_list %}
+    <tr>
+        <th>{{ order.id }}</th>
+        <th>{{ order.car_name }}</th>
+        <th>{{ order.status }}</th>
+        <th>{{ order.first_name }}</th>
+        <th>{{ order.last_name }}</th>
+        <th>{{ order.email }}</th>
+        <th>{{ order.phone }}</th>
+        <th>{{ order.message }}</th>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

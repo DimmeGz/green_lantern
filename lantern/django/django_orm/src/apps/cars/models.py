@@ -100,6 +100,7 @@ class Car(BaseDateAuditModel):
     status = models.CharField(max_length=15, choices=STATUS_CHOICES, default=STATUS_PENDING, blank=True)
     dealer = models.ForeignKey('dealers.Dealer', on_delete=models.CASCADE, related_name='cars', null=True, blank=False)
     color = models.ForeignKey(to='Color', on_delete=models.SET_NULL, null=True, blank=False)
+    brand = models.ForeignKey(CarBrand, on_delete=models.CASCADE)
     model = models.ForeignKey(to='CarModel', on_delete=models.SET_NULL, null=True, blank=False)
     extra_title = models.CharField(max_length=255, null=True, blank=True, verbose_name=_('Title second part'))
 
@@ -110,6 +111,7 @@ class Car(BaseDateAuditModel):
     doors = models.PositiveSmallIntegerField(default=4)
     sitting_places = models.PositiveSmallIntegerField(default=4)
     first_registration_date = models.DateField(auto_now_add=False, null=True, blank=False)
+    photo = models.ImageField(null=True, blank=False)
 
     # other fields ...
     #

@@ -16,18 +16,27 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.urls import path
 from django.views.generic import TemplateView
 
 from apps.newsletters.views import NewsLetterView
 from common.views import LoginView, logout_view
+from apps.cars.views import CarListView, CarView
+from apps.photos.views import UpdateImageView
+from apps.orders.views import OrderView, OrderListView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('success/', TemplateView.as_view(template_name='success.html'), name='success'),
     path('newsletter/', NewsLetterView.as_view(), name='newsletter'),
     path('login/', LoginView.as_view(), name='login'),
-    path('logout/', logout_view, name='logout')
+    path('logout/', logout_view, name='logout'),
+    path('car_list/', CarListView.as_view(), name='car_list'),
+    path('update_photo/', login_required(UpdateImageView.as_view()), name='update_photo'),
+    path('car/<int:id>', CarView.as_view(), name='car_list'),
+    path('order/', login_required(OrderView.as_view()), name='order'),
+    path('order_list/', OrderListView.as_view(), name='order_list'),
 ]
 
 if settings.DEBUG:
